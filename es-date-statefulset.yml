@@ -1,0 +1,63 @@
+apiVersion: apps/v1beta1
+kind: StatefulSet
+metadata:
+  name: elasticsearch-data
+  labels:
+    app: elastic
+    deployment: production
+    role: data
+spec:
+  
+  replicas: 1
+  serviceName: elasticsearch-data
+  template:
+    metadata:
+      name: elasticsearch-data
+      labels:
+        app: elastic
+        deployment: production
+        role: data
+    spec:
+      containers:
+        - name: elasticsearch-data
+          image: rahulkrishnanfs/docker-elasticsearch-kubernetes:1.0
+          ports:
+            - containerPort: 9200
+              name: restapi
+            - containerPort: 9300
+              name: nodecom
+
+          env:
+
+            - name: NODE_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+            - name: CLUSTER_NAME
+              value: "elastic"
+            - name: NODE_MASTER
+              value: "false"
+            - name: NODE_DATA
+              value: "true"
+            - name: NODE_MAX_LOCAL_STORAGE_NODES
+              value: "1"
+            - name: INDEX_NO_OF_SHARDS
+              value: "5"
+            - name: INDEX_NO_OF_REPLICAS
+              value: "1"
+            - name: NETWORK_HOST
+              value: "_non_loopback:ipv4_"
+            - name: ZEN_MINIMUM_MASTER_NODES
+              value: "1"
+            - name: MULTICAST_ENABLED
+              value: "false"
+  volumeClaimTemplates:
+       - metadata:
+            name: storage
+            annotations:
+              volume.beta.kubernetes.io/storage-class: slow
+         spec:
+            accessModes: ["ReadWriteOnce"]
+            resources:
+              requests:
+                storage: 10Gi

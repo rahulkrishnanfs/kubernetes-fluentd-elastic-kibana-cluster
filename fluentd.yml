@@ -1,0 +1,48 @@
+apiVersion: extensions/v1beta1
+kind: DaemonSet
+metadata:
+  name: flunetd
+  labels:
+    app: fluentd
+    tier: monitoring
+    version: "1.0"
+spec:
+  template:
+    metadata:
+      name: fluentd
+      labels:
+        app: fluentd
+    spec:
+      containers:
+        - name: fluentd
+          image: quay.io/fluent/fluentd-kubernetes-daemonset
+          ports:
+          volumeMounts:
+            - name: libcontainers
+              mountPath: /var/lib/docker/containers 
+              readOnly: true 
+            - name: hostlog
+              mountPath: /var/log  
+          resources:     
+            requests:
+              memory: 300Mi
+            limits:
+              memory: 300Mi
+          env:  
+            - name: FLUENT_ELASTICSEARCH_HOST
+              value: elasticsearch-internal
+            - name: FLUENT_ELASTICSEARCH_PORT
+              value: "9200"
+      volumes:
+        - name: hostlog
+          hostPath:
+             path:  /var/log
+        - name: libcontainers
+          hostPath: 
+            path: /var/lib/docker/containers
+
+
+
+
+
+

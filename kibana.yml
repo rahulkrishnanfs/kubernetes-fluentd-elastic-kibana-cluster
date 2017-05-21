@@ -1,0 +1,26 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: kibana
+  labels:
+    app: kibana
+    role: visual
+spec:
+  template:
+    metadata:
+      labels:
+        app: kibana   
+        role: visual
+    spec:
+      containers: 
+        - name: kibana
+          image: kibana:4.1
+          ports:
+            - name: kibanaport
+              containerPort: 5601
+          env:
+            - name: ELASTICSEARCH_URL
+              value: "http://elasticsearch-internal:9200"
+
+
+
