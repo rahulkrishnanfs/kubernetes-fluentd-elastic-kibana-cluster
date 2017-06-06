@@ -43,7 +43,7 @@ Kubernetes log analysis using Fluentd, Elastic and Kibana
 ```
     kubectl create -f es-date-statefulset.yml
 
-```
+
 
     Check the status of the node  using the step3 
 !['o' output](http://i.imgur.com/WjMNfy0.png)
