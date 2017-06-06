@@ -12,12 +12,19 @@ Kubernetes log analysis using Fluentd, Elastic and Kibana
     $kubectl create -f es-master.yml
 
 ```
-2. Create service resource elaticsearch with external cloud provider Loadbalancer. This is not recommented for the production. You can use this to test indices in the elaticsearch and node status  
+2. Create service resource elasticsearch with external cloud provider Loadbalancer. This is not recommented for the production. You can use this to test indices in the elaticsearch and node status  
 
 ```
-    kubectl create -f es-master-svc.yml
+    $kubectl create -f es-master-svc.yml
 
-```  
+```
+3. Create the slave node to include in the cluster. you can check the status of the master and slave node with 
+
+http://<serverip>:9200/_cat/nodes
+
+!['o' output](http://i.imgur.com/UmZsXYU.png)
+!['o' output](http://i.imgur.com/KHetkud.png)
+
 ```
     kubectl create -f es-client.yml
 
@@ -47,6 +54,7 @@ Kubernetes log analysis using Fluentd, Elastic and Kibana
 ```
 
 !['o' output](http://i.imgur.com/CcptHnN.png)
+
 
 
 [1.1]: http://i.imgur.com/tXSoThF.png (twitter icon with padding)
