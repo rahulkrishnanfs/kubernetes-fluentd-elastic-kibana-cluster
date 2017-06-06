@@ -31,27 +31,23 @@ Kubernetes log analysis using Fluentd, Elastic and Kibana
 
 ```
     kubectl create -f es-client.yml
-
 ```
 
 5. Create a service named  elastic-discovery with port 9300 port for syncing the cluster 
 
 ```
    kubectl create -f es-master-client-svc.yml
-
 ```
 
 6. Create a service named elasticsearch-internal, so that services can make use of elasticsearch cluster. This service is not exposing to the outside world .
 
 ```
     kubectl create -f es-master-internal-svc.yml
-
 ```
  7. This will create a pod to store the data in the elasticsearch cluster with Statefulsets kubernetes resource. 
  
 ```
     kubectl create -f es-date-statefulset.yml
-
 ```
     
  !['o' output](http://i.imgur.com/WjMNfy0.png)
@@ -60,13 +56,11 @@ Kubernetes log analysis using Fluentd, Elastic and Kibana
 
 ```
     kubectl create -f fluentd.yml
-
 ```
 9. 
 
 ```
     kubectl create -f  kibana.yml 
- 
  ``` 
 
 
