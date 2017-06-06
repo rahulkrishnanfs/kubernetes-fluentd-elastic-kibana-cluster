@@ -10,7 +10,7 @@ T
 $ docker run -it rahulkrishnanfs/docker-jre:1.0 sh
 
 ```
-!['o' output](http://imgur.com/CcptHnN)
+!['o' output](https://i.imgur.com/CcptHnN)
 
 
 [1.1]: http://i.imgur.com/tXSoThF.png (twitter icon with padding)
