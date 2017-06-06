@@ -52,17 +52,22 @@ Kubernetes log analysis using Fluentd, Elastic and Kibana
     
  !['o' output](http://i.imgur.com/WjMNfy0.png)
 
-8. Fluentd pod  is deployed across the K8s cluster with Deployment resource. 
+8. Fluentd pod is deployed across the K8s cluster using Deployment resource. 
 
 ```
     kubectl create -f fluentd.yml
 ```
-9. 
+9.  Kibana pod will be created and accessing the logs by communicating the elasticsearch cluster using the elasticsearch-internal service with 9200 port.
 
 ```
     kubectl create -f  kibana.yml 
  ``` 
+ 
+ 10. Kibana K8s service will be created with external cloud provider Loadbalancer to access the kinana using port 5601
 
+```
+    kubectl create -f  kibana-svc.yml 
+ ``` 
 
 !['o' output](http://i.imgur.com/CcptHnN.png)
 
