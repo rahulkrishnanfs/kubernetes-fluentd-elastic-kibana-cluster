@@ -30,34 +30,31 @@ Kubernetes log analysis using Fluentd, Elastic and Kibana
     kubectl create -f es-client.yml
 
 ```
+
 ```
     kubectl create -f es-master-client-svc.yml
 
-```  
-
-```  
+```
+```
     kubectl create -f es-master-internal-svc.yml
-
-``` 
+    
+```
 
 ```
     kubectl create -f es-date-statefulset.yml
 
-
+```
 
     Check the status of the node  using the step3 
+    
 !['o' output](http://i.imgur.com/WjMNfy0.png)
 
 
-```
     kubectl create -f fluentd.yml
 
-```
-
-```
-   kubectl create -f  kibana.yml 
+    kubectl create -f  kibana.yml 
    
-```
+
 
 !['o' output](http://i.imgur.com/CcptHnN.png)
 
