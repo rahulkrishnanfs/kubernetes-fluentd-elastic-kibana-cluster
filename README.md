@@ -39,7 +39,7 @@ Kubernetes log analysis using Fluentd, Elastic and Kibana
 
 ```
 
-6. Create a service name elasticsearch-internal, so that services can make use of elasticsearch cluster. This service is not exposing to the outside world .
+6. Create a service named elasticsearch-internal, so that services can make use of elasticsearch cluster. This service is not exposing to the outside world .
 
 ```
     kubectl create -f es-master-internal-svc.yml
@@ -51,19 +51,21 @@ Kubernetes log analysis using Fluentd, Elastic and Kibana
     kubectl create -f es-date-statefulset.yml
 
 ```
-
-
-    
-    
     
  !['o' output](http://i.imgur.com/WjMNfy0.png)
 
+8. Fluentd pod  is deployed across the K8s cluster with Deployment resource. 
 
+```
     kubectl create -f fluentd.yml
 
+```
+9. 
+
+```
     kubectl create -f  kibana.yml 
  
-  
+ ``` 
 
 
 !['o' output](http://i.imgur.com/CcptHnN.png)
