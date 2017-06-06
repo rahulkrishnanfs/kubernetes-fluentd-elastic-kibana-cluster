@@ -25,6 +25,7 @@ Kubernetes log analysis using Fluentd, Elastic and Kibana
 !['o' output](http://i.imgur.com/UmZsXYU.png)
 !['o' output](http://i.imgur.com/KHetkud.png)
 
+
 ```
     kubectl create -f es-client.yml
 
