@@ -6,27 +6,24 @@ Kubernetes log analysis using Fluentd, Elastic and Kibana
 
 ### Usage
 
-1. Create elasticsearch master pod which has elasticsearch-master container
+1. Create elasticsearch master pod which has elasticsearch-master container.
 
 ```
     $kubectl create -f es-master.yml
 ```
 
-2. Create service resource elasticsearch with external cloud provider Loadbalancer. This is not recommented for the production. You can use this to test indices in the elaticsearch and node status  
+2. Create K8s service resource named elasticsearch with external cloud provider Loadbalancer. This is not recommented for the production. You can use this to test indices in the elaticsearch and the node status.  
 
 ```
     $kubectl create -f es-master-svc.yml
 ```
 
-3. Create the slave node to include in the cluster. you can check the status of the master and slave node with 
+3. Create the slave node to include in the cluster. Check the status of the master and slave node with the help of following url.
 
 ```
     http://< serverip >:9200/_cat/nodes
 ```
 
-!['o' output](http://i.imgur.com/UmZsXYU.png)
-
-!['o' output](http://i.imgur.com/KHetkud.png)
 
 4. Create a Deployment resource named elasticsearch-client with container named elasticsearch-client. This will be added as a slave node
    in the cluster. 
@@ -35,7 +32,7 @@ Kubernetes log analysis using Fluentd, Elastic and Kibana
     kubectl create -f es-client.yml
 ```
 
-5. Create a service named  elastic-discovery with port 9300 port for syncing the cluster 
+5. Create a K8s service named elastic-discovery with port 9300 port for syncing the cluster 
 
 ```
    kubectl create -f es-master-client-svc.yml
@@ -46,19 +43,23 @@ Kubernetes log analysis using Fluentd, Elastic and Kibana
 ```
     kubectl create -f es-master-internal-svc.yml
 ```
- 7. This will create a pod to store the data in the elasticsearch cluster with Statefulsets kubernetes resource. 
+
+ 7. This will create a pod to store data in the elasticsearch cluster with the help of Statefulsets kubernetes resource. 
  
 ```
     kubectl create -f es-date-statefulset.yml
 ```
     
+    
  !['o' output](http://i.imgur.com/WjMNfy0.png)
 
-8. Fluentd pod is deployed across the K8s cluster using Deployment resource. 
+
+8. Fluentd pod is deployed across the K8s cluster using Deployment resource. This will ensure that a copy of Fluend pod is running on all minions
 
 ```
     kubectl create -f fluentd.yml
 ```
+
 9.  Kibana pod will be created and accessing the logs by communicating the elasticsearch cluster using the elasticsearch-internal service with 9200 port.
 
 ```
@@ -78,3 +79,5 @@ Kubernetes log analysis using Fluentd, Elastic and Kibana
 [1.1]: http://i.imgur.com/tXSoThF.png (twitter icon with padding)
 [1]: http://www.twitter.com/rahulkrishnanra
 
+
+##Create a PR if you find any issue. I would welcome you to contribute to this project fast developent 
