@@ -4,12 +4,44 @@ Kubernetes log analysis using Fluentd, Elastic and Kibana
 
 #### Follow me on [![alt text][1.1]][1]
 
-T
-### Usage 
-```
-$ docker run -it rahulkrishnanfs/docker-jre:1.0 sh
+### Usage
 
 ```
+    kubectl create -f es-master.yml
+
+```
+```
+    kubectl create -f es-master-svc.yml
+
+```  
+```
+    kubectl create -f es-client.yml
+
+```
+```
+    kubectl create -f es-master-client-svc.yml
+
+```  
+
+```  
+    kubectl create -f es-master-internal-svc.yml
+
+``` 
+
+```
+    kubectl create -f es-date-statefulset.yml
+
+```
+```
+    kubectl create -f fluentd.yml
+
+```
+
+```
+   kubectl create -f  kibana.yml 
+   
+```
+
 !['o' output](http://i.imgur.com/CcptHnN.png)
 
 
