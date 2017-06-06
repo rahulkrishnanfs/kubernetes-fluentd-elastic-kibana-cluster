@@ -6,8 +6,10 @@ Kubernetes log analysis using Fluentd, Elastic and Kibana
 
 ### Usage
 
+1. Create elasticsearch master pod which has elasticsearch-master container
+
 ```
-    kubectl create -f es-master.yml
+    $kubectl create -f es-master.yml
 
 ```
 ```
