@@ -80,4 +80,14 @@ Kubernetes log analysis using Fluentd, Elastic and Kibana
 [1]: http://www.twitter.com/rahulkrishnanra
 
 
+### Useful kubectl commands to check the status of the ELF cluster 
+
+```
+ $kubectl get pods --namespace=< namespace  >
+ $kubectl get deployments
+ $kubectl get services
+ $kubectl get statefulsets
+
+```
+
 ##Create a PR if you find any issue. I would welcome you to contribute to this project fast developent 
