@@ -20,7 +20,9 @@ Kubernetes log analysis using Fluentd, Elastic and Kibana
 
 3. Create the slave node to include in the cluster. you can check the status of the master and slave node with 
 
+```
     http://< serverip >:9200/_cat/nodes
+```
 
 !['o' output](http://i.imgur.com/UmZsXYU.png)
 
